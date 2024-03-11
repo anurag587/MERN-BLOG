@@ -22,7 +22,7 @@ app.listen(5000, () => {
   console.log("Server is running on port 5000!!");
 });
 
-app.use("/api/", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
 // app.post("/api/auth", (res, req) => {
