@@ -29,7 +29,7 @@ app.use("/api/auth", authRoutes);
 //   res.send(req.body);
 // });
 
-app.use((err, res, req, next) => {
+app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   res.status(statusCode).json({
