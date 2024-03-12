@@ -25,6 +25,8 @@ export default function Signup() {
         body: JSON.stringify(formData),
       })
       const data = await res.json();
+      
+      //This is basically because --> if the database is having a username of similar name it will throw an error. 
       if(data.success === false){
         return setErrorMessage(data.message)
       }
