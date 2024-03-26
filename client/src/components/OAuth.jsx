@@ -23,10 +23,10 @@ export function OAuth() {
                 body: JSON.stringify({
                     name : resultsFromGoogle.user.displayName,
                     email : resultsFromGoogle.user.email,
-                    googlephotoURL : resultsFromGoogle.user.photoURL
+                    googlePhotoUrl : resultsFromGoogle.user.photoURL
                 }),
               }) 
-              const data = res.json();
+              const data = await res.json();
               if(res.ok){
                 dispatch(signInSuccess(data))
                 navigate('/')
