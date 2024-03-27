@@ -8,7 +8,7 @@ import { ThemeProvider } from './components/ThemeProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <ThemeProvider>
+  <ThemeProvider>
   <App />
   </ThemeProvider>
 </Provider>,
