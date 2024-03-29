@@ -34,7 +34,7 @@ export default function CreatePost() {
           placeholder="Write Something Amazing..."
           className="mb-12 h-72 "
         />
-        <Button type="submit" gradientDuoTone="redToYellow" outline>
+        <Button type="submit" gradientDuoTone="redToYellow">
           Publish
         </Button>
       </form>
