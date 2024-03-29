@@ -2,10 +2,12 @@ import { Button, Label, TextInput } from "flowbite-react";
 import { useSelector } from "react-redux";
 import { signOutSuccess } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 export default function DashProfile() {
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log(currentUser);
+  //   console.log(currentUser);
   const dispatch = useDispatch();
   const handleSignOut = async () => {
     try {
@@ -51,21 +53,20 @@ export default function DashProfile() {
           id="email"
           defaultValue={currentUser.email}
         />
-        {/* <TextInput type="password" placeholder="password" id="password" /> */}
-        {/* <Button type="submit" gradientDuoTone="purpleToBlue" outline>
-          Update
-        </Button> */}
-        <span
-          className="cursor-pointer text-center text-red-500"
-          onClick={handleSignOut}
-        >
-          Sign Out
-        </span>
+        {currentUser.isAdmin && (
+          <Link to={"/create-post"}>
+            <Button gradientDuoTone="redToYellow" outline className="w-full">
+              Create a Post
+            </Button>
+          </Link>
+        )}
       </form>
-      {/* <div className="text-red-500   mt-5">
-        <span className="cursor-pointer">Delete Account</span>
-        <span className="cursor-pointer text-center">Sign Out</span>
-      </div> */}
+      {/* <span
+            className="cursor-pointer text-center text-red-500"
+            onClick={handleSignOut}
+        >
+            Sign Out
+        </span> */}
     </div>
   );
 }
