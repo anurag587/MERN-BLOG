@@ -12,7 +12,7 @@ export const signup = async (req, res, next) => {
     username === " " ||
     email === " " ||
     password === " "
-  ) {
+  ) { 
     next(errorHandler(400, "All fields are required"));
   }
 
@@ -71,6 +71,8 @@ export const google = async (req, res, next) => {
         { id: user._id, isAdmin: user.isAdmin },
         process.env.JWT_SECRET
       );
+     // console.log(token)
+
       const { password, ...rest } = user._doc;
       res
         .status(200)
