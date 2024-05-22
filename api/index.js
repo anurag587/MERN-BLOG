@@ -5,8 +5,8 @@ import cookieParser from 'cookie-parser';
 import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import postRoutes from "./routes/post.routes.js";
+import commentRoutes from "./routes/comment.routes.js";
 dotenv.config();
-
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
@@ -23,19 +23,10 @@ app.use(cookieParser());
 app.listen(5000, () => {
   console.log("Server is running on port 5000!!");
 });
-
-
-
-
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
-
-
-
-// app.post("/api/auth", (res, req) => {
-//   res.send(req.body);
-// });
+app.use("/api/comment",commentRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
