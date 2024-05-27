@@ -12,4 +12,8 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      external: ['mongoose'], // Ensure mongoose is not included in the client bundle
+    },
 });
