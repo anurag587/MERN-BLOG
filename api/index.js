@@ -7,9 +7,9 @@ import authRoutes from "./routes/auth.routes.js";
 import postRoutes from "./routes/post.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 import path from "path";
+import cors from 'cors';
 dotenv.config();
-mongoose
-  .connect(process.env.MONGO)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connection Successfull");
   })
@@ -18,12 +18,14 @@ mongoose
   });
 
   const __dirname = path.resolve()
-const app = express();
-app.use(express.json()); //app.use(express.json()) is middleware that parses incoming requests with JSON payloads
+  const app = express();
+  app.use(cors());
+app.use(express.json()); //app.use(express.jsoßn()) is middleware that parses incoming requests with JSON payloads
 app.use(cookieParser());
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000!!");
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}!!`);
 });
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
